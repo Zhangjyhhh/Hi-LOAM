@@ -19,7 +19,7 @@
 
 
 
-<span style="color: #FF0000;">We have uploaded partly configuration files for some datasets, and will continue to upload the remaining configuration files progressively. ！！！</span>
+<span style="color: #FF0000;">We have uploaded partly configuration files for some datasets, and will continue to upload the remaining configuration files progressively.！！！</span>
 
 
 ## Abstract
