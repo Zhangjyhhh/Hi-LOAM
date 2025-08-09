@@ -25,8 +25,7 @@
 ## Abstract
 LiDAR Odometry and Mapping (LOAM) is a pivotal
 technique for embodied-AI applications such as autonomous driving and robot navigation. Existing LOAM frameworks either rely
-on the explicit representation, restricted to the supervision signal,or lack of the reconstruction fidelity, which are deficient in representing large-scale complex scenes. To overcome these limitations,
-we propose a multi-scale implicit neural localization and mapping
+on the explicit representation, restricted to the supervision signal,or lack of the reconstruction fidelity, which are deficient in representing large-scale complex scenes. To overcome these limitations, we propose a multi-scale implicit neural localization and mapping
 framework using LiDAR sensor, called Hi-LOAM. Hi-LOAM
 receives LiDAR point cloud as the input data modality, learns
 and stores hierarchical latent features in multiple levels of hash
@@ -41,6 +40,7 @@ the model pre-training and manifests its generalizability when
 applied to diverse environments. Extensive experiments on multiple real-world and synthetic datasets demonstrate the superior
 performance, in terms of the effectiveness and generalization
 capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
+
 ----
 
 <!-- TABLE OF CONTENTS -->
