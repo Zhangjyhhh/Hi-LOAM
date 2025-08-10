@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import os
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
-def run_shine_mapping_incremental():
+def run_Hi_LOAM():
 
     config = SHINEConfig()
     if len(sys.argv) > 1:
@@ -375,4 +375,4 @@ def run_shine_mapping_incremental():
         vis.stop()
 
 if __name__ == "__main__":
-    run_shine_mapping_incremental()
+    run_Hi_LOAM()
