@@ -31,7 +31,7 @@ def run_Hi_LOAM():
         config.load(sys.argv[1])
     else:
         sys.exit(
-            "Please provide the path to the config file.\nTry: python shine_incre.py xxx/xxx_config.yaml"
+            "Please provide the path to the config file."
         )
 
     run_path = setup_experiment(config)
