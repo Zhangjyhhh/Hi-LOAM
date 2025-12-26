@@ -146,22 +146,22 @@ After preparing the data, you need to correctly set the data path (`pc_path` and
 
 we show some example run commands for one scene from each dataset. After SLAM, the trajectory error will be evaluated along with the rendering metrics. The results will be saved to `./experiments` by default.
 
-*To run KITTI dataset, please use the following command:
+To run KITTI dataset, please use the following command:
 ```
 python Hi_LOAM.py ./config/kitti/kitti_general.yaml
 ```
 
-*To run Mai City dataset, please use the following command:
+To run Mai City dataset, please use the following command:
 ```
 python Hi_LOAM.py ./config/maicity/maicity_general.yaml
 ```
 
-*To run Newer College dataset, please use the following command:
+To run Newer College dataset, please use the following command:
 ```
 python Hi_LOAM.py ./config/ncd/ncd_general.yaml
 ```
 
-*To run Hilti dataset, please use the following command:
+To run Hilti dataset, please use the following command:
 ```
 python Hi_LOAM.py ./config/hilti/hilti_general.yaml
 ```
