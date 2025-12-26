@@ -72,24 +72,24 @@ capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
 
 ----
 
-## Installation
+## 1.Installation
 
 Platform requirement
 * Ubuntu OS (tested on 18.04)
 * With GPU (recommended),GPU memory requirement (> 8 GB and the more, the better)
 
 
-### 1. Clone Hi-LOAM repository
+### 1.1 Clone Hi-LOAM repository
 ```
 git clone https://github.com/Zhangjyhhh/Hi-LOAM.git
 cd Hi-LOAM
 ```
-### 2. Set up conda environment
+### 1.2 Set up conda environment
 ```
 conda create --name Hi-LOAM python=3.7
 conda activate Hi-LOAM
 ```
-### 3. Install the key requirement kaolin
+### 1.3 Install the key requirement kaolin
 
 Kaolin depends on Pytorch (>= 1.8, <= 1.13.1), please install the corresponding Pytorch for your CUDA version (can be checked by ```nvcc --version```). You can find the installation commands [here](https://pytorch.org/get-started/previous-versions/).
 
@@ -122,7 +122,7 @@ Use ```python -c "import kaolin; print(kaolin.__version__)"``` to check if kaoli
 </details>
 
 
-### 4. Install the other requirements
+### 1.4 Install the other requirements
 ```
 pip install open3d scikit-image wandb tqdm natsort pyquaternion
 ```
@@ -144,12 +144,27 @@ After preparing the data, you need to correctly set the data path (`pc_path` and
 
 ##  How to Run
 
-We take the KITTI dataset as an example to show how Hi-LOAM works, just run:
+we show some example run commands for one scene from each dataset. After SLAM, the trajectory error will be evaluated along with the rendering metrics. The results will be saved to `./experiments` by default.
+
+*To run KITTI dataset, please use the following command:
 ```
 python Hi_LOAM.py ./config/kitti/kitti_general.yaml
 ```
 
+*To run Mai City dataset, please use the following command:
+```
+python Hi_LOAM.py ./config/maicity/maicity_general.yaml
+```
 
+*To run Newer College dataset, please use the following command:
+```
+python Hi_LOAM.py ./config/ncd/ncd_general.yaml
+```
+
+*To run Hilti dataset, please use the following command:
+```
+python Hi_LOAM.py ./config/hilti/hilti_general.yaml
+```
 
 ## Evaluation
 
