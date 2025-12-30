@@ -177,7 +177,56 @@ python ./eval/evaluator.py
 
 * To evaluate the odometry, we use EVO tools(https://github.com/MichaelGrupp/evo). For Hilti-21 dataset, we use this tool (https://github.com/Hilti-Research/hilti-slam-challenge-2021) to evaluate our odometry
 
+# Absolute Trajectory Error (ATE)
+We compute the Absolute Trajectory Error by aligning the estimated trajectory to the ground truth trajectory in the KITTI pose format:
 
+```
+evo_ape kitti \
+  ~/path/to/your/estimated/pose.txt \
+  /path/your/ground/truth/poses.txt \
+  -a --align_origin
+```
+<details>
+  <summary>[Arguments (click to expand)]</summary>
+
+* `kitti` : input trajectory format is KITTI pose format (each line is a 3x4 pose matrix, 12 floats).
+* first file: estimated trajectory.
+* second file: ground truth trajectory.
+* `-a`/ `--align`: align the estimated trajectory to GT before evaluation (SE(3) alignment).
+* `--align_origin`: additionally align the origin (start pose) of the two trajectories.
+</details>
+
+# Plot and compare trajectories (GT vs. Hi-LOAM)
+To visualize and compare the estimated trajectory against the ground truth, we use evo_traj:
+
+```
+evo_traj kitti \
+  /path/to/your/estimated/pose.txt \
+  --ref=/path/your/ground/truth/poses.txt \
+  -va -p \
+  --save_plot traj_va_results.npz
+```
+<details>
+  <summary>[Arguments (click to expand)]</summary>
+
+* `--ref=...` : set ground truth trajectory as the reference.
+* `-v`: verbose output (optional).
+* `-a`: align estimated trajectory to reference before plotting (same idea as in evaluation).
+* `-p`: show plot window (interactive).
+
+If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
+</details>
+
+# Qualitative Evaluation
+[CloudCompare](https://www.cloudcompare.org/) is used for qualitative comparison and analysis.
+<details>
+  <summary>[More Usage (click to expand)]</summary>
+ </p>
+<p align="center">
+  <img src="[https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Qualitative%20Evaluation.png]" width="100%" />
+</p>
+The Visualization of Our 3D Reconstruction Results on Mai City Dataset via Comparing with Other Related Methods. The mapping results in first row are original reconstruction result, and the second row presents the error maps with ground truth mesh as a reference, where the red points stand for large error above 25cm.
+</details>
 
 ## Acknowledgment
 
