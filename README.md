@@ -48,7 +48,7 @@ capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
 <!-- TABLE OF CONTENTS -->
 <details open="open" style='padding: 10px; border-radius:5px 30px 30px 5px; border-style: solid; border-width: 1px;'>
   <summary>Table of Contents</summary>
-  <ol>
+  <ol start="0">
     <li>
       <a href="#abstract">Abstract</a>
     </li>
@@ -59,7 +59,7 @@ capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
       <a href="#prepare-data">Data</a>
     </li>
     <li>
-      <a href="#run">How to run</a>
+      <a href="#run">How to Run</a>
     </li>
     <li>
       <a href="#evaluation">Evaluation</a>
@@ -72,7 +72,7 @@ capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
 
 ----
 
-## 1.Installation
+## 1. Installation
 
 Platform requirement
 * Ubuntu OS (tested on 18.04)
@@ -129,7 +129,7 @@ pip install open3d scikit-image wandb tqdm natsort pyquaternion
 ----
 
 
-## Download data
+## 2. Download data
 
 Generally speaking, you only need to provide:
 * `pc_path` : the folder containing the point cloud (`.bin`, `.ply` or `.pcd` format) for each frame.
@@ -142,7 +142,7 @@ After preparing the data, you need to correctly set the data path (`pc_path` and
 
 
 
-##  How to Run
+## 3. How to Run
 
 we show some example run commands for one scene from each dataset. After SLAM, the trajectory error will be evaluated along with the rendering metrics. The results will be saved to `./experiments` by default.
 
@@ -166,8 +166,9 @@ To run Hilti dataset, please use the following command:
 python Hi_LOAM.py ./config/hilti/hilti_general.yaml
 ```
 
-## Evaluation
+## 4. Evaluation
 
+### 4.1 Evaluation Protocol
 * To evaluate the reconstruction quality, you need to provide the (reference) ground truth point cloud and your reconstructed mesh. The ground truth point cloud can be found (or sampled from) the downloaded folder of MaiCity and Newer College . 
 Please change the data path and evaluation set-up in `./eval/evaluator.py` and then run:
 
@@ -177,7 +178,7 @@ python ./eval/evaluator.py
 
 * To evaluate the odometry, we use EVO tools(https://github.com/MichaelGrupp/evo). For Hilti-21 dataset, we use this tool (https://github.com/Hilti-Research/hilti-slam-challenge-2021) to evaluate our odometry
 
-### Absolute Trajectory Error (ATE)
+### 4.2 Absolute Trajectory Error (ATE)
 We compute the Absolute Trajectory Error by aligning the estimated trajectory to the ground truth trajectory in the KITTI pose format:
 
 ```
@@ -196,7 +197,7 @@ evo_ape kitti \
 * `--align_origin`: additionally align the origin (start pose) of the two trajectories.
 </details>
 
-### Plot and compare trajectories (GT vs. Hi-LOAM)
+### 4.3 Plot and compare trajectories (GT vs. Hi-LOAM)
 To visualize and compare the estimated trajectory against the ground truth, we use evo_traj:
 
 ```
@@ -217,7 +218,7 @@ evo_traj kitti \
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
 </details>
 
-### Qualitative Evaluation
+### 4.4 Qualitative Evaluation
 [CloudCompare](https://www.cloudcompare.org/) is used for qualitative comparison and analysis.
 <details>
   <summary>[More Usage (click to expand)]</summary>
@@ -230,7 +231,7 @@ If you want to directly save the visualization as an image (png/pdf), you can us
 The Visualization of Our 3D Reconstruction Results on Mai City Dataset via Comparing with Other Related Methods. The mapping results in first row are original reconstruction result, and the second row presents the error maps with ground truth mesh as a reference, where the red points stand for large error above 25cm.
 </details>
 
-## Acknowledgment
+## 5. Acknowledgment
 
 Additionally, we thank greatly for the authors of the following opensource projects:
 
