@@ -1,4 +1,3 @@
-# Hi-LOAM
 <p align="center">
   <h1 align="center">✨ Hi-LOAM: Hierarchical Implicit Neural Fields for LliDAR Odometry and Mapping</h1>
   <p align="center">
@@ -103,8 +102,6 @@ Kaolin now supports installation with wheels. For example, to install kaolin 0.1
 pip install kaolin==0.12.0 -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-1.12.1_cu116.html
 ```
 
-<details>
-  <summary>[Or you can build kaolin by yourself (click to expand)]</summary>
 
 Follow the [instructions](https://kaolin.readthedocs.io/en/latest/notes/installation.html) to install [kaolin](https://kaolin.readthedocs.io/en/latest/index.html). Firstly, clone kaolin to a local directory:
 
@@ -119,7 +116,6 @@ python setup.py develop
 ```
 
 Use ```python -c "import kaolin; print(kaolin.__version__)"``` to check if kaolin is successfully installed.
-</details>
 
 
 ### 1.4 Install the other requirements
@@ -137,9 +133,19 @@ Generally speaking, you only need to provide:
 
 Datasets are available for download on their official websites. you may run the script in Folder A to download test samples for program testing.
 
-After preparing the data, you need to correctly set the data path (`pc_path` and `calib_path`) in the config files under `config` folder. You may also set a path `output_root` to store the experiment results and logs.
+After preparing the data, you need to correctly set the data path (`pc_path` and `calib_path`) in the config files under `config` folder. You may also set a path `output_root` to store the experiment results and logs.Here, we provide the link to several publicly available datasets for testing Hi-LOAM:
 
+### 2.1 Newer College Dataset
 
+Download the dataset from [here]([https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing]).
+
+### 2.2 Kitti Dataset
+
+Download the dataset from [here]([https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing]).
+
+### 2.3  Mai City Dataset
+
+Download the dataset from [here]([https://www.ipb.uni-bonn.de/html/projects/mai_city/mai_city.tar.gz]).
 
 
 ## 3. How to Run
@@ -187,15 +193,16 @@ evo_ape kitti \
   /path/your/ground/truth/poses.txt \
   -a --align_origin
 ```
-<details>
-  <summary>[Arguments (click to expand)]</summary>
 
 * `kitti` : input trajectory format is KITTI pose format (each line is a 3x4 pose matrix, 12 floats).
 * first file: estimated trajectory.
 * second file: ground truth trajectory.
 * `-a`/ `--align`: align the estimated trajectory to GT before evaluation (SE(3) alignment).
 * `--align_origin`: additionally align the origin (start pose) of the two trajectories.
-</details>
+ </p>
+<p align="center">
+  <img src="" width="100%" />
+</p>
 
 ### 4.3 Plot and compare trajectories (GT vs. Hi-LOAM)
 To visualize and compare the estimated trajectory against the ground truth, we use evo_traj:
@@ -207,8 +214,6 @@ evo_traj kitti \
   -va -p \
   --save_plot traj_va_results.npz
 ```
-<details>
-  <summary>[Arguments (click to expand)]</summary>
 
 * `--ref=...` : set ground truth trajectory as the reference.
 * `-v`: verbose output (optional).
@@ -216,12 +221,14 @@ evo_traj kitti \
 * `-p`: show plot window (interactive).
 
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
-</details>
+ </p>
+<p align="center">
+  <img src="" width="100%" />
+</p>
 
 ### 4.4 Qualitative Evaluation
 [CloudCompare](https://www.cloudcompare.org/) is used for qualitative comparison and analysis.
-<details>
-  <summary>[More Usage (click to expand)]</summary>
+
   
  </p>
 <p align="center">
@@ -229,7 +236,6 @@ If you want to directly save the visualization as an image (png/pdf), you can us
 </p>
 
 The Visualization of Our 3D Reconstruction Results on Mai City Dataset via Comparing with Other Related Methods. The mapping results in first row are original reconstruction result, and the second row presents the error maps with ground truth mesh as a reference, where the red points stand for large error above 25cm.
-</details>
 
 ## 5. Acknowledgment
 
