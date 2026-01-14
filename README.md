@@ -137,15 +137,15 @@ After preparing the data, you need to correctly set the data path (`pc_path` and
 
 ### 2.1 Newer College Dataset
 
-Download the dataset from [here]([https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing]).
+Download the dataset from [here](https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing).
 
 ### 2.2 Kitti Dataset
 
-Download the dataset from [here]([https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing]).
+Download the dataset from [here](https://drive.google.com/drive/folders/15lTH5osZzZlDpcW7oXfR_2t8TNssNARS?usp=sharing).
 
 ### 2.3  Mai City Dataset
 
-Download the dataset from [here]([https://www.ipb.uni-bonn.de/html/projects/mai_city/mai_city.tar.gz]).
+Download the dataset from [here](https://www.ipb.uni-bonn.de/html/projects/mai_city/mai_city.tar.gz).
 
 
 ## 3. How to Run
@@ -191,17 +191,17 @@ We compute the Absolute Trajectory Error by aligning the estimated trajectory to
 evo_ape kitti \
   ~/path/to/your/estimated/pose.txt \
   /path/your/ground/truth/poses.txt \
-  -a --align_origin
+  -a 
 ```
 
 * `kitti` : input trajectory format is KITTI pose format (each line is a 3x4 pose matrix, 12 floats).
 * first file: estimated trajectory.
 * second file: ground truth trajectory.
 * `-a`/ `--align`: align the estimated trajectory to GT before evaluation (SE(3) alignment).
-* `--align_origin`: additionally align the origin (start pose) of the two trajectories.
+
  </p>
 <p align="center">
-  <img src="" width="100%" />
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Absolute%20Trajectory%20Error%20(ATE)" width="100%" />
 </p>
 
 ### 4.3 Plot and compare trajectories (GT vs. Hi-LOAM)
@@ -223,7 +223,7 @@ evo_traj kitti \
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
  </p>
 <p align="center">
-  <img src="" width="100%" />
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Plot%20and%20compare%20trajectories" width="100%" />
 </p>
 
 ### 4.4 Qualitative Evaluation
