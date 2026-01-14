@@ -223,7 +223,7 @@ evo_traj kitti \
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
  </p>
 <p align="center">
-  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Plot%20and%20compare%20trajectories" width="100%" />
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/DC1_1P6.png" width="100%" />
 </p>
 
 ### 4.4 Qualitative Evaluation
