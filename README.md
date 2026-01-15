@@ -24,23 +24,8 @@
 
 
 ## Abstract
-LiDAR Odometry and Mapping (LOAM) is a pivotal
-technique for embodied-AI applications such as autonomous driving and robot navigation. Existing LOAM frameworks either rely
-on the explicit representation, restricted to the supervision signal,or lack of the reconstruction fidelity, which are deficient in representing large-scale complex scenes. To overcome these limitations, we propose a multi-scale implicit neural localization and mapping
-framework using LiDAR sensor, called Hi-LOAM. Hi-LOAM
-receives LiDAR point cloud as the input data modality, learns
-and stores hierarchical latent features in multiple levels of hash
-tables based on an octree structure, then these multi-scale latent
-features are decoded into signed distance value through shallow
-Multilayer Perceptrons (MLPs) in the mapping procedure. For
-pose estimation procedure, we rely on a correspondence-free,
-scan-to-implicit matching paradigm to estimate optimal pose
-and register current scan into the submap. The entire training
-process is conducted in a self-supervised manner, which waives
-the model pre-training and manifests its generalizability when
-applied to diverse environments. Extensive experiments on multiple real-world and synthetic datasets demonstrate the superior
-performance, in terms of the effectiveness and generalization
-capabilities, of our Hi-LOAM compared to existing state-of-the-art methods
+LiDAR Odometry and Mapping (LOAM) is a pivotal technique for embodied-AI applications such as autonomous driving and robot navigation. Existing LOAM frameworks either rely on the explicit representation, restricted to the supervision signal, or lack of the reconstruction fidelity, which are deficient in representing large-scale complex scenes. To overcome these limitations, we propose a multi-scale implicit neural localization and mapping framework using LiDAR sensor, called Hi-LOAM. Hi-LOAM receives LiDAR point cloud as the input data modality, learns and stores hierarchical latent features in multiple levels of hash
+tables based on an octree structure, then these multi-scale latent features are decoded into signed distance value through shallow Multilayer Perceptrons (MLPs) in the mapping procedure. For pose estimation procedure, we rely on a correspondence-free, scan-to-implicit matching paradigm to estimate optimal pose and register current scan into the submap. The entire training process is conducted in a self-supervised manner, which waives the model pre-training and manifests its generalizability when applied to diverse environments. Extensive experiments on multiple real-world and synthetic datasets demonstrate the superior performance, in terms of the effectiveness and generalization capabilities, of our Hi-LOAM compared to existing state-of-the-art methods.
 
 ----
 
@@ -174,7 +159,7 @@ python Hi_LOAM.py ./config/hilti/hilti_general.yaml
 
 ## 4. Evaluation
 
-### 4.1 Evaluation Protocol
+### 4.1 Reconstruction Quality Evaluation
 * To evaluate the reconstruction quality, you need to provide the (reference) ground truth point cloud and your reconstructed mesh. The ground truth point cloud can be found (or sampled from) the downloaded folder of MaiCity and Newer College . 
 Please change the data path and evaluation set-up in `./eval/evaluator.py` and then run:
 
@@ -184,8 +169,8 @@ python ./eval/evaluator.py
 
 * To evaluate the odometry, we use EVO tools(https://github.com/MichaelGrupp/evo). For Hilti-21 dataset, we use this tool (https://github.com/Hilti-Research/hilti-slam-challenge-2021) to evaluate our odometry
 
-### 4.2 Absolute Trajectory Error (ATE)
-We compute the Absolute Trajectory Error by aligning the estimated trajectory to the ground truth trajectory in the KITTI pose format:
+### 4.2 Trajectory Error Evaluation
+We compute the Absolute Trajectory Error (ATE) by aligning the estimated trajectory to the ground truth trajectory in the KITTI pose format:
 
 ```
 evo_ape kitti \
@@ -204,7 +189,7 @@ evo_ape kitti \
   <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Absolute%20Trajectory%20Error%20(ATE)" width="100%" />
 </p>
 
-### 4.3 Plot and compare trajectories (GT vs. Hi-LOAM)
+### 4.3 Trajectory Plot (GT vs. Hi-LOAM)
 To visualize and compare the estimated trajectory against the ground truth, we use evo_traj:
 
 ```
@@ -223,7 +208,7 @@ evo_traj kitti \
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
  </p>
 <p align="center">
-  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/DC1_1P6.png" width="100%" />
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/DC1_1P6.png" width="50%" />
 </p>
 
 ### 4.4 Qualitative Evaluation
