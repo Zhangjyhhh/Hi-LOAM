@@ -133,6 +133,12 @@ Download the dataset from [here](https://drive.google.com/drive/folders/15lTH5os
 Download the dataset from [here](https://www.ipb.uni-bonn.de/html/projects/mai_city/mai_city.tar.gz).
 
 
+### 2.4  Hilti SLAM Dataset 2021
+
+Download the dataset from [here](https://www.hilti-challenge.com/dataset-2021.html).
+
+
+
 ## 3. How to Run
 
 we show some example run commands for one scene from each dataset. After SLAM, the trajectory error will be evaluated along with the rendering metrics. The results will be saved to `./experiments` by default.
@@ -160,14 +166,21 @@ python Hi_LOAM.py ./config/hilti/hilti_general.yaml
 ## 4. Evaluation
 
 ### 4.1 Reconstruction Quality Evaluation
-* To evaluate the reconstruction quality, you need to provide the (reference) ground truth point cloud and your reconstructed mesh. The ground truth point cloud can be found (or sampled from) the downloaded folder of MaiCity and Newer College . 
+* To evaluate the reconstruction quality, you need to provide the (reference) ground truth point cloud and your reconstructed mesh. The ground truth point cloud can be found (or sampled from) the downloaded folder of MaiCity and Newer College. 
 Please change the data path and evaluation set-up in `./eval/evaluator.py` and then run:
 
 ```
 python ./eval/evaluator.py
 ```
 
-* To evaluate the odometry, we use EVO tools(https://github.com/MichaelGrupp/evo). For Hilti-21 dataset, we use this tool (https://github.com/Hilti-Research/hilti-slam-challenge-2021) to evaluate our odometry
+* To evaluate the odometry, we use EVO tools(https://github.com/MichaelGrupp/evo). For Hilti-21 dataset, we use this tool (https://github.com/Hilti-Research/hilti-slam-challenge-2021) to evaluate our odometry. [CloudCompare](https://www.cloudcompare.org/) is used for qualitative comparison and analysis.
+
+ </p>
+<p align="center">
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Qualitative%20Evaluation.png" width="100%" />
+</p>
+
+The Visualization of Our 3D Reconstruction Results on Mai City Dataset via Comparing with Other Related Methods. The mapping results in first row are original reconstruction result, and the second row presents the error maps with ground truth mesh as a reference, where the red points stand for large error above 25cm.
 
 ### 4.2 Trajectory Error Evaluation
 We compute the Absolute Trajectory Error (ATE) by aligning the estimated trajectory to the ground truth trajectory in the KITTI pose format:
@@ -208,19 +221,10 @@ evo_traj kitti \
 If you want to directly save the visualization as an image (png/pdf), you can usually use `--save_plot xxx.png `(depending on whether the installed EVO version supports direct image output). If your EVO version only supports saving `.npz `files, you can further export the figures using `evo_res ` or by loading the `.npz `file for visualization.
  </p>
 <p align="center">
-  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/DC1_1P6.png" width="50%" />
+  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/DC1_1P6.png" width="30%" />
 </p>
 
-### 4.4 Qualitative Evaluation
-[CloudCompare](https://www.cloudcompare.org/) is used for qualitative comparison and analysis.
 
-  
- </p>
-<p align="center">
-  <img src="https://github.com/Zhangjyhhh/Hi-LOAM/blob/main/Hi_LOAM/Qualitative%20Evaluation.png" width="100%" />
-</p>
-
-The Visualization of Our 3D Reconstruction Results on Mai City Dataset via Comparing with Other Related Methods. The mapping results in first row are original reconstruction result, and the second row presents the error maps with ground truth mesh as a reference, where the red points stand for large error above 25cm.
 
 ## 5. Acknowledgment
 
